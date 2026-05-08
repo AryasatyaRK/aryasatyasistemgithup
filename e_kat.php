@@ -1,3 +1,22 @@
+<?php
+include "koneksi.php";
+$id = $_GET['id'];
+$sql = mysqli_query($conn, "SELECT * FROM categories WHERE id = '$id'");
+$hasil = mysqli_fetch_array($sql);
+if (isset($_POST['update'])) {
+
+    $nm_kat = $_POST['nm_kat'];
+
+    $query = mysqli_query($conn, "UPDATE categories SET category_name = '$nm_kat' WHERE id='$id'");
+    if ($query) {
+        echo "<script>alert('Data berhasil diubah!')</script>";
+        header("refresh:0, kategori_produk.php");
+    } else {
+        echo "<script>alert('Data gagal diubah!')</script>";
+        header("refresh:0, kategori_produk.php");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +24,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Produk - AryasistemRK</title>
+  <title>Kategori Produk - AryasistemRK</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -29,18 +48,11 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
+   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
@@ -51,7 +63,7 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-
+    
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
@@ -60,7 +72,7 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-
+            
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -117,126 +129,94 @@
 
   </header><!-- End Header -->
 
-
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="index.php">
+        <a class="nav-link " href="index.html">
           <i class="bi bi-speedometer2"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li><!-- End Dash
+
+      
 
       <li class="nav-item">
-        <a class="nav-link" href="kategori_produk.php">
+        <a class="nav-link collapsed" href="users-profile.html">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="kategori_produk.php">
           <i class="bi bi-tags"></i>
           <span>Kategori Produk</span>
         </a>
-      </li><!-- End Profile Page Nav -->
+      </li><!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="produk.php">
           <i class="bi bi-box-seam"></i>
           <span>Data Produk</span>
         </a>
-      </li><!-- End F.A.Q Page Nav -->
+      </li><!-- End Contact Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="laporan.php">
           <i class="bi bi-bar-chart"></i>
           <span>Laporan</span>
         </a>
-      </li><!-- End Contact Page Nav -->
+      </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="users.php">
           <i class="bi bi-people"></i>
           <span>Users</span>
         </a>
-      </li><!-- End Register Page Nav -->
+      </li><!-- End Login Page Nav -->
 
     </ul>
 
   </aside><!-- End Sidebar-->
-
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Produk</h1>
+      <h1>Kategori Produk</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-          <li class="breadcrumb-item active">Produk</li>
+          <li class="breadcrumb-item">Kategori Produk</li>
+          <li class="breadcrumb-item active">Edit</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-    <div class="row">
-      <div class="col-lg-12">
-
-        <div class="card">
-          <div class="card-body mt-3">
-            <a href="t_produk.php" class="btn btn-primary">Tambah Data</a>
-            <a href="stok.php" class="btn btn-dark">Stok</a>
-          </div>
-        </div>
-      </div>
-    </div>
     <section class="section">
       <div class="row">
-        <div class="col-lg-12">
+
+        <div class="col-lg-6">
 
           <div class="card">
-            <div class="card-body mt-3">
+            <div class="card-body">
+              <h5 class="card-title">Edit</h5>
 
-              <!-- Table with stripped rows -->
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Kode Produk</th>
-                    <th scope="col">Nama Produk</th>
-                    <th scope="col">Kategori</th>
-                    <th scope="col">Stok</th>
-                    <th scope="col">Harga</th>
-                    <th scope="col">Gambar</th>
-                    <th scope="col">Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  include "koneksi.php";
-                  $no = 1;
-
-                  // ambil data produk + nama kategori
-                  $sql = mysqli_query($conn, "
-    SELECT p.*, c.category_name 
-    FROM products p
-    LEFT JOIN categories c ON p.category_id = c.id
-");
-
-                  while ($data = mysqli_fetch_array($sql)) {
-                  ?>
-                    <tr>
-                      <td><?php echo $no++; ?></td>
-                      <td><?php echo $data['product_code']; ?></td>
-                      <td><?php echo $data['product_name']; ?></td>
-                      <td><?php echo $data['category_name']; ?></td>
-                      <td><?php echo $data['stock']; ?></td>
-                      <td>Rp <?php echo number_format($data['price'], 0, ',', '.'); ?></td>
-                      <td>
-                        <img src="produk_img/<?php echo $data['gambar']; ?>" width="60">
-                      </td>
-                      <td>
-                        <a href="e_produk.php?id=<?php echo $data['id']; ?>" class="btn btn-warning">Edit</a>
-                        <a href="h_produk.php?id=<?php echo $data['id']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">Hapus</a>
-                      </td>
-                    </tr>
-                  <?php } ?>
-                </tbody>
-              </table>
+              <form class="row g-3" method="post">
+                                <div class="col-12">
+                                    <label for="kd_kat" class="form-label">Kode Kategori</label>
+                                    <input type="text" class="form-control" id="kd_kat" name="kd_kat" value="<?php echo $hasil['kd_kat']; ?>" readonly>
+                                </div>
+                                <div class="col-12">
+                                    <label for="nm_kat" class="form-label">Nama Kategori</label>
+                                    <input type="text" class="form-control" id="nm_kat" name="nm_kat" value="<?php echo $hasil['category_name']; ?>" required>
+                                </div>
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-warning"><a href="kategori_produk.php" style="color: black; text-decoration:none;">Kembali</a></button>
+                                    <button type="reset" class="btn btn-secondary">Reset</button>
+                                    <button type="submit" class="btn btn-success" name="update">Update</button>
+                                </div>
+                            </form>
 
             </div>
           </div>
