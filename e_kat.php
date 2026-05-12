@@ -56,7 +56,7 @@ if (isset($_POST['update'])) {
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">AryasistemRK</span>
       </a>
@@ -200,7 +200,7 @@ if (isset($_POST['update'])) {
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Edit</h5>
+              <h5 class="Edit Kategori Produk">Edit</h5>
 
               <form class="row g-3" method="post">
                                 <div class="col-12">
