@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+include "koneksi.php";
+
+// Cek apakah user sudah login
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,13 +42,6 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -55,61 +61,52 @@
 
         <li class="nav-item dropdown pe-3">
 
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-          </a><!-- End Profile Iamge Icon -->
+          <a
+            class="nav-link nav-profile d-flex align-items-center pe-0"
+            href="#"
+            data-bs-toggle="dropdown">
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <img
+              src="assets/img/profile-img.jpg"
+              alt="Profile"
+              class="rounded-circle" />
+
+          </a><!-- End Profile Image Icon -->
+
+          <ul
+            class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
+              <h6>
+                <?php echo isset($_SESSION['name']) ? $_SESSION['name'] : 'User'; ?>
+              </h6>
+
+              <span>
+                <?php echo isset($_SESSION['role']) ? $_SESSION['role'] : 'Role'; ?>
+              </span>
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
+              <hr class="dropdown-divider" />
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="logout.php">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
             </li>
 
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
+          </ul>
+          <!-- End Profile Dropdown Items -->
+
+        </li>
+        <!-- End Profile Nav -->
 
       </ul>
-    </nav><!-- End Icons Navigation -->
+    </nav>
+
+    <!-- End Icons Navigation -->
 
   </header><!-- End Header -->
 
@@ -126,7 +123,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link" href="kategori_produk.php">
+        <a class="nav-link collapsed" href="kategori_produk.php">
           <i class="bi bi-tags"></i>
           <span>Kategori Produk</span>
         </a>
@@ -140,14 +137,14 @@
       </li><!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
+        <a class="nav-link collapsed" href="Laporan.php">
           <i class="bi bi-bar-chart"></i>
           <span>Laporan</span>
         </a>
       </li><!-- End Contact Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users.php">
+        <a class="nav-link" href="users.php">
           <i class="bi bi-people"></i>
           <span>Users</span>
         </a>
@@ -168,63 +165,73 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-body mt-3">
+            <a href="t_user.php" class="btn btn-primary">Tambah data</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
 
           <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Datatables</h5>
-              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
+            <div class="card-body mt-3">
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Start Date</th>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Dibuat</th>
+                    <th scope="col">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td>2016-05-25</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td>2014-12-05</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td>2011-08-12</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td>2012-06-11</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td>2011-04-19</td>
-                  </tr>
+                  <?php
+                  include "koneksi.php";
+                  $no = 1;
+                  $sql = mysqli_query($conn, "SELECT * FROM users");
+                  while ($data = mysqli_fetch_array($sql)) {
+                  ?>
+                    <tr>
+                      <td><?php echo $no++; ?></td>
+                      <td><?php echo $data['name']; ?></td>
+                      <td><?php echo $data['email']; ?></td>
+                      <td><?php echo ucfirst($data['role']); ?></td>
+
+                      <td>
+                        <?php
+                        if ($data['is_active'] == 1) {
+                          echo '<span class="badge bg-success">Aktif</span>';
+                        } else {
+                          echo '<span class="badge bg-danger">Nonaktif</span>';
+                        }
+                        ?>
+                      </td>
+
+                      <td><?php echo date('d-m-Y H:i', strtotime($data['created_at'])); ?></td>
+                      <td>
+                        <a href="e_user.php?id=<?php echo $data['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="h_user.php?id=<?php echo $data['id']; ?>"
+                          class="btn btn-danger btn-sm"
+                          onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                          Hapus
+                        </a>
+                      </td>
+                    </tr>
+                  <?php } ?>
+                </tbody>
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
@@ -241,14 +248,11 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>AryasistemRK</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+     
+      Designed by <a href="">Aryasatya</a>
     </div>
   </footer><!-- End Footer -->
 
