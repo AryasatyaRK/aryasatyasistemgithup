@@ -161,7 +161,7 @@ function waktu_lalu($datetime)
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="assets/img/Logo PC New.png" alt="">
         <span class="d-none d-lg-block">AryasistemRK</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -180,7 +180,7 @@ function waktu_lalu($datetime)
             data-bs-toggle="dropdown">
 
             <img
-              src="assets/img/profile-img.jpg"
+              src="assets/img/PP.jpeg"
               alt="Profile"
               class="rounded-circle" />
 

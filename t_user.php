@@ -87,7 +87,7 @@ VALUES ('$name', '$email', '$password_hash', '$role', '$is_active')");
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="assets/img/Logo PC New.png" alt="">
         <span class="d-none d-lg-block">AryasistemRK</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -104,7 +104,7 @@ VALUES ('$name', '$email', '$password_hash', '$role', '$is_active')");
             data-bs-toggle="dropdown">
 
             <img
-              src="assets/img/profile-img.jpg"
+              src="assets/img/PP.jpeg"
               alt="Profile"
               class="rounded-circle" />
 
@@ -153,38 +153,48 @@ VALUES ('$name', '$email', '$password_hash', '$role', '$is_active')");
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.php">
-          <i class="bi bi-grid"></i>
+          <i class="bi bi-speedometer2"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li><!-- End Dash
+
+      
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="kategori_produk.php">
+        <a class="nav-link collapsed" href="users-profile.html">
           <i class="bi bi-person"></i>
-          <span>Kategori Produk</span>
+          <span>Profile</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="produk.php">
-          <i class="bi bi-question-circle"></i>
-          <span>Data Produk</span>
+        <a class="nav-link collapsed " href="kategori_produk.php">
+          <i class="bi bi-tags"></i>
+          <span>Kategori Produk</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="laporan.php">
-          <i class="bi bi-envelope"></i>
-          <span>Laporan</span>
+        <a class="nav-link collapsed" href="produk.php">
+          <i class="bi bi-box-seam"></i>
+          <span>Data Produk</span>
         </a>
       </li><!-- End Contact Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link" href="users.php">
-          <i class="bi bi-card-list"></i>
-          <span>Manajemen User</span>
+        <a class="nav-link collapsed" href="laporan.php">
+          <i class="bi bi-bar-chart"></i>
+          <span>Laporan</span>
         </a>
       </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link" href="users.php">
+          <i class="bi bi-people"></i>
+          <span>Users</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+
     </ul>
 
   </aside><!-- End Sidebar-->
